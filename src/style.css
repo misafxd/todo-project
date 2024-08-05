@@ -20,9 +20,6 @@
     filter: drop-shadow(-5px 5px 0.5rem #ecf4ff);
 }
 
-#main {
-    grid-area: main;
-}
 
 #aside {
     grid-area: aside;
@@ -64,3 +61,29 @@ header img, .aside-button img{
     margin-block-end: 3rem;
 }
 
+#main {
+    grid-area: main;
+    padding: 2rem;
+}
+
+.main-header {
+    display: flex;
+}
+
+.main-header h2 {
+    margin-right: auto;
+}
+
+.main-header button {
+    background-color:  #edc3e7;
+    border-radius: 0.5rem;
+    padding-inline: 1rem;
+}
+
+.main-header button img {
+    filter: invert(75%);
+}
+
+.main-header button:active {
+    transform: scale(95%);
+}
