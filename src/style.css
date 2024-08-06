@@ -8,6 +8,7 @@
 
 }
 
+
 .container {
     display: grid;
     grid-template-columns: 1fr 3fr;
@@ -64,6 +65,8 @@ header img, .aside-button img{
 #main {
     grid-area: main;
     padding: 2rem;
+    display: flex;
+    flex-direction: column;
 }
 
 .main-header {
@@ -86,4 +89,36 @@ header img, .aside-button img{
 
 .main-header button:active {
     transform: scale(95%);
+}
+
+.modal-container {
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0,0,0, 0.5);
+    position: fixed;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.35s ease-in;
+}
+
+.modal {
+    width: 20rem;
+}
+
+form {
+    border-radius: 0.5rem;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    background-color: #edc3e7;
+}
+
+.modal-visible {
+    opacity: 1;
+    visibility: visible;
 }

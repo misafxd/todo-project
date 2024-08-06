@@ -16,5 +16,9 @@ export const Projects = ( function () {
         toUpdate.task.push(task);
     }
 
-    return {newProject, addTask, projectsList: projectList}
+    const all = () => {
+        return projectList.map(project => project.title);
+    }
+
+    return {newProject, addTask, projectsList: projectList, all}
 })();
