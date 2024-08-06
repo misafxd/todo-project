@@ -1,4 +1,5 @@
 import { Projects } from "./createProject";
+import { createTask } from "./createTask";
 
 export function modal(){
     const body = document.getElementById('body');
@@ -11,6 +12,7 @@ export function modal(){
     const description = createInput('text', 'Description');
     const projectName = document.createElement('select');
     projectName.id = 'Project';
+    projectName.setAttribute('name', "Project");
     modalContent.classList.add('modal');
     modalContainer.classList.add('modal-container');
 
@@ -31,6 +33,15 @@ export function modal(){
     const submit = document.createElement('button');
     submit.type = 'submit';
     submit.textContent = "Create";
+
+    form.addEventListener('submit', (event)=> {
+        event.preventDefault();
+        const formData = new FormData(form);
+        const taskObject = createTask.newTask(formData.get('Title'), formData.get('Date'),formData.get('Description'), formData.get('Project'));
+        Projects.addTask(taskObject.project_id, taskObject);
+        closeModal();
+        form.reset();
+    })
 
     closeButton.textContent = "Cancel";
     closeButton.type = 'button'
