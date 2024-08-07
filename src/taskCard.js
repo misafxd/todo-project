@@ -8,10 +8,10 @@ export const card = (function() {
         cardTitle.innerText = title;
         const Due = document.createElement('p');
         Due.innerText = `Due: ${due}`;
-        Due.classList.add('card-information');
         const Project = document.createElement('p');
         Project.innerText = `Project: ${project}`;
-        Project.classList.add('card-information');
+        cardDescription.classList.add('card-information');
+        cardInfo.classList.add('card-info');
 
         const checkBox = document.createElement('input');
         checkBox.type = 'checkbox';

@@ -21,9 +21,9 @@ export function MainContent(){
     mainHeader.appendChild(addTaskButton);
     
     
-    const newCard = card.domCard('Misa', '2024-12-05', 'La rata');
+    // const newCard = card.domCard('Misa', '2024-12-05', 'La rata'); para pruebas
 
     main.appendChild(mainHeader);
-    main.appendChild(newCard);
+    // main.appendChild(newCard); solo para pruebas
 
 }
