@@ -1,6 +1,7 @@
 import { Button } from "./button";
 import plus from './plus.png';
 import { modal , showModal } from "./modal";
+import { card } from "./taskCard";
 
 export function MainContent(){
     modal();
@@ -20,8 +21,9 @@ export function MainContent(){
     mainHeader.appendChild(addTaskButton);
     
     
-
+    const newCard = card.domCard('Misa', '2024-12-05', 'La rata');
 
     main.appendChild(mainHeader);
+    main.appendChild(newCard);
 
 }

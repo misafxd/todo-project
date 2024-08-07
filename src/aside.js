@@ -11,7 +11,7 @@ export function Aside(title){
     const buttons = ButtonGroup();
     const plusIcon = new Image();
     plusIcon.src = plus;
-    const newTodo = Button(() => console.log('nuevo'), 'Add new todo', plusIcon);
+    const newTodo = Button(() => console.log('nuevo'), 'Add new project', plusIcon);
     newTodo.classList.add('new-project');
     aside.appendChild(PageHeader);
     aside.appendChild(buttons);
