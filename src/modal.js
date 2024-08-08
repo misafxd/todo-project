@@ -16,13 +16,13 @@ export function modal(){
     modalContent.classList.add('modal');
     modalContainer.classList.add('modal-container');
 
-    if (Projects.all().length <= 0){
+    if (Projects.allProjects().length <= 0){
         Projects.newProject('All');
         const option = document.createElement('option');
         option.textContent = 'All';
         projectName.appendChild(option);
     }else {
-        Projects.all().forEach(title => {
+        Projects.allProjects().forEach(title => {
             let option = document.createElement('option');
             option.textContent = title;
             option.value = title;

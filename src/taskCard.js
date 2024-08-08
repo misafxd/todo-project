@@ -1,5 +1,7 @@
+import { Projects } from "./createProject";
+
 export const card = (function() {
-    const domCard = (title, due, project) => {
+    const createCard = (title, due, project) => {
         const card = document.createElement('div');
         const cardInfo = document.createElement('div');
         const cardDescription = document.createElement('div');
@@ -37,7 +39,11 @@ export const card = (function() {
 
     }
 
+    const showAllCards = () => {
+        
+    }
+
     return {
-        domCard
+        createCard
     }
 })();

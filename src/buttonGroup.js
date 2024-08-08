@@ -23,7 +23,7 @@ export function ButtonGroup () {
     buttonGroup.classList.add('button-group');
 
     const buttons = [
-        {icon: homeIcon, onClick: () => console.log('click button 1'), text: 'All'},
+        {icon: homeIcon, onClick: () => {console.log(Projects.all())}, text: 'All'},
         {icon: todayIcon, onClick: () => console.log('click 2'), text: 'Today'},
         {icon: projectsIcon, onClick: () => console.log('click 3'), text: 'Projects'},
         {icon: completedIcon, onClick: () => console.log('click 4'), text: 'Completed'}

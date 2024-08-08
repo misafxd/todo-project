@@ -16,9 +16,16 @@ export const Projects = ( function () {
         toUpdate.task.push(task);
     }
 
-    const all = () => {
+    const allProjects = () => {
         return projectList.map(project => project.title);
+        
     }
 
-    return {newProject, addTask, projectsList: projectList, all}
+    const all = () => {
+        return projectList.reduce((acc, project) => {
+            return acc.concat(project.task || []);
+        },[]);
+    }
+
+    return {newProject, addTask, projectsList: projectList, allProjects, all}
 })();
