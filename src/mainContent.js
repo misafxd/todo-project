@@ -10,6 +10,7 @@ export function MainContent(){
     const mainHeader = document.createElement('div');
     const mainTitle = document.createElement('h2');
     const mainCards = document.createElement('section');
+    mainTitle.classList.add('main-title');
     mainCards.classList.add('cards');
     mainHeader.classList.add('main-header');
     mainTitle.textContent = "All";
