@@ -1,5 +1,6 @@
 import { Projects } from "./createProject";
 import { Storage } from "./storage";
+import { parseISO, compareAsc, compareDesc } from "date-fns";
 
 export const card = (function() {
     
@@ -12,6 +13,7 @@ export const card = (function() {
         const cardTitle = document.createElement('h3');
         cardTitle.innerText = title;
         const Due = document.createElement('p');
+        Due.classList.add('due');
         Due.innerText = `Due: ${due}`;
         const Project = document.createElement('p');
         Project.innerText = `Project: ${project}`;
@@ -25,6 +27,7 @@ export const card = (function() {
         checkBox.addEventListener('change', () => {
             updateState(title, checkBox.checked);
             Storage.save();
+            
         })
 
         card.appendChild(checkBox);
@@ -49,7 +52,32 @@ export const card = (function() {
             if (task) {
                 task.checked = state;
             }
+           sortTask()
         })
+    }
+
+    const sortTask = () => {
+        const mainCards = document.querySelector('.cards');
+        const cards = Array.from(mainCards.children);
+    
+        cards.sort((a, b) => {
+            const aDate = new Date(a.querySelector('.due').textContent.split('Due: ')[1]);
+            const bDate = new Date(b.querySelector('.due').textContent.split('Due: ')[1]);
+           
+            let dateComparison = compareAsc(aDate, bDate);
+
+            return dateComparison;
+            
+        
+        });
+
+        cards.sort((a,b) => {
+            const aChecked = a.querySelector('input[type="checkbox"]').checked;
+            const bChecked = b.querySelector('input[type="checkbox"]').checked;
+            return (aChecked - bChecked);
+        })
+    
+        cards.forEach(card => mainCards.appendChild(card));
     }
 
     const showAllCards = () => {
@@ -68,6 +96,6 @@ export const card = (function() {
     }
 
     return {
-        createCard, showAllCards
+        createCard, showAllCards, sortTask
     }
 })();

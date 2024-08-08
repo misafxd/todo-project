@@ -26,5 +26,6 @@ export function MainContent(){
     main.appendChild(mainHeader);
     main.appendChild(mainCards);
     card.showAllCards();
+    card.sortTask();
 
 }

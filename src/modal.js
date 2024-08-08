@@ -44,6 +44,7 @@ export function modal(){
         closeModal();
         form.reset();
         card.showAllCards();
+        card.sortTask();
         Storage.save();
     });
 
