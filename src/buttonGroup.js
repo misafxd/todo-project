@@ -1,5 +1,5 @@
 import { Button } from "./button";
-import { Projects } from "./createProject";
+import { card } from "./taskCard";
 import home from './home.png';
 import today from './today.png';
 import completed from './completed.png';
@@ -23,7 +23,7 @@ export function ButtonGroup () {
     buttonGroup.classList.add('button-group');
 
     const buttons = [
-        {icon: homeIcon, onClick: () => {console.log(Projects.all())}, text: 'All'},
+        {icon: homeIcon, onClick: () => {card.showAllCards()}, text: 'All'},
         {icon: todayIcon, onClick: () => console.log('click 2'), text: 'Today'},
         {icon: projectsIcon, onClick: () => console.log('click 3'), text: 'Projects'},
         {icon: completedIcon, onClick: () => console.log('click 4'), text: 'Completed'}

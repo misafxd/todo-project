@@ -1,5 +1,12 @@
+import { Storage } from "./storage";
+
 export const Projects = ( function () {
-    const projectList = [];
+    let projectList = [];
+
+    if (Storage.load()){
+        projectList = Storage.load();
+    }
+
 
     const createNewProject = (title) =>{
         return {title, "task": []};
@@ -11,7 +18,7 @@ export const Projects = ( function () {
         
     }
 
-    const addTask = (project,task) => {
+    const addTask = (project, task) => {
         const toUpdate = projectList.find(p => p.title === project);
         toUpdate.task.push(task);
     }
@@ -27,5 +34,5 @@ export const Projects = ( function () {
         },[]);
     }
 
-    return {newProject, addTask, projectsList: projectList, allProjects, all}
+    return {newProject, addTask, projectsList: projectList, allProjects, all, }
 })();

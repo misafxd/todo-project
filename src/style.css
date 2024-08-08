@@ -129,6 +129,7 @@ form {
     border: 1px solid #edc3e7;
     padding: 1rem;
     margin-block: 0.5rem;
+    gap: 1rem;
 }
 
 .card-information {
@@ -140,12 +141,11 @@ form {
 .card-info {
     display: flex;
     min-width: 70%;
-    margin-right: auto;
     justify-content: space-between;
     align-items: center;
 }
 
-.card.checked > * {
+input[type="checkbox"]:checked + * {
     text-decoration-line: line-through;
     font-style: italic;
     

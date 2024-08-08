@@ -9,6 +9,8 @@ export function MainContent(){
     const main = document.getElementById('main');
     const mainHeader = document.createElement('div');
     const mainTitle = document.createElement('h2');
+    const mainCards = document.createElement('section');
+    mainCards.classList.add('cards');
     mainHeader.classList.add('main-header');
     mainTitle.textContent = "All";
     const plusIcon = new Image();
@@ -19,11 +21,10 @@ export function MainContent(){
 
     mainHeader.appendChild(mainTitle);
     mainHeader.appendChild(addTaskButton);
-    
-    
-    // const newCard = card.domCard('Misa', '2024-12-05', 'La rata'); para pruebas
+       
 
     main.appendChild(mainHeader);
-    // main.appendChild(newCard); solo para pruebas
+    main.appendChild(mainCards);
+    card.showAllCards();
 
 }

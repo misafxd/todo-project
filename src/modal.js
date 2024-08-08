@@ -1,5 +1,7 @@
 import { Projects } from "./createProject";
 import { createTask } from "./createTask";
+import { card } from "./taskCard";
+import { Storage } from "./storage";
 
 export function modal(){
     const body = document.getElementById('body');
@@ -41,7 +43,9 @@ export function modal(){
         Projects.addTask(taskObject.project_id, taskObject);
         closeModal();
         form.reset();
-    })
+        card.showAllCards();
+        Storage.save();
+    });
 
     closeButton.textContent = "Cancel";
     closeButton.type = 'button'
