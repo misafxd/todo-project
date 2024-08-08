@@ -4,6 +4,7 @@ import home from './home.png';
 import today from './today.png';
 import completed from './completed.png';
 import project from './project.png';
+import { showTodayCards } from "./today";
 
 function addIcon(icon) {
     const newIcon = new Image();
@@ -24,7 +25,7 @@ export function ButtonGroup () {
 
     const buttons = [
         {icon: homeIcon, onClick: () => {card.showAllCards()}, text: 'All'},
-        {icon: todayIcon, onClick: () => console.log('click 2'), text: 'Today'},
+        {icon: todayIcon, onClick: () => {showTodayCards()}, text: 'Today'},
         {icon: projectsIcon, onClick: () => console.log('click 3'), text: 'Projects'},
         {icon: completedIcon, onClick: () => console.log('click 4'), text: 'Completed'}
     ]

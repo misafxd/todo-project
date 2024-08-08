@@ -1,6 +1,6 @@
 import { Projects } from "./createProject";
 import { Storage } from "./storage";
-import { parseISO, compareAsc, compareDesc } from "date-fns";
+import { compareAsc } from "date-fns";
 
 export const card = (function() {
     
@@ -92,10 +92,11 @@ export const card = (function() {
             mainCards.appendChild(newTask);
         });
 
+        sortTask()
 
     }
 
     return {
-        createCard, showAllCards, sortTask
+        createCard, showAllCards, sortTask, clean
     }
 })();
