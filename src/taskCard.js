@@ -5,7 +5,7 @@ import { compareAsc, format} from "date-fns";
 export const card = (function() {
     
     
-    const createCard = (title, due, project,checked) => {
+    const createCard = (title, due, project, checked) => {
         const card = document.createElement('div');
         const cardInfo = document.createElement('div');
         const cardDescription = document.createElement('div');
@@ -90,7 +90,7 @@ export const card = (function() {
         
 
         allTask.forEach(task => {
-            let newTask = createCard(task.title, task.due, task.description, task.checked);
+            let newTask = createCard(task.title, task.due, task.project_id, task.checked);
             mainCards.appendChild(newTask);
         });
 
