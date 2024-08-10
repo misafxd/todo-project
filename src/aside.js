@@ -2,7 +2,7 @@ import { header } from "./header";
 import { ButtonGroup } from "./buttonGroup";
 import { Button } from "./button";
 import plus from './plus.png';
-import { Projects } from './createProject';
+import { newProjectModal } from "./newProjectModal";
 
 
 export function Aside(title){
@@ -11,7 +11,7 @@ export function Aside(title){
     const buttons = ButtonGroup();
     const plusIcon = new Image();
     plusIcon.src = plus;
-    const newTodo = Button(() => console.log('nuevo'), 'Add new project', plusIcon);
+    const newTodo = Button(() => {newProjectModal.showProjectModal()}, 'Add new project', plusIcon);
     newTodo.classList.add('new-project');
     aside.appendChild(PageHeader);
     aside.appendChild(buttons);

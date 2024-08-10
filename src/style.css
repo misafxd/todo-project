@@ -92,7 +92,7 @@ header img, .aside-button img{
     transform: scale(95%);
 }
 
-.modal-container {
+.modal-container, .project-modal-container {
     width: 100vw;
     height: 100vh;
     background-color: rgba(0,0,0, 0.5);
