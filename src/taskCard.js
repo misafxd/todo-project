@@ -136,7 +136,32 @@ export const card = (function() {
         sortTask();
     }
 
+    const showProjectCards = (title) => {
+        const mainCards = document.querySelector('.cards');
+        const mainTitle = document.querySelector('.main-title');
+        const project = Projects.projectsList.filter(p => p.title == title);
+        const projectTask = project[0].task;
+        const empty = document.createElement('h3');
+        empty.textContent = 'Empty project!!! please add a new task :C';
+        empty.classList.add('empty');
+        
+        clean();
+
+        if (projectTask.length > 0){
+        projectTask.forEach( task => {
+ 
+            let newTask = createCard(task.title, task.due, task.description, task.checked);
+            mainCards.appendChild(newTask);
+            
+        })} else {
+            mainCards.appendChild(empty);
+        }
+
+        mainTitle.textContent = title;
+        sortTask();
+    }
+
     return {
-        createCard, showAllCards, sortTask, showTodayCards, showCompleted
+        createCard, showAllCards, sortTask, showTodayCards, showCompleted, showProjectCards
     }
 })();

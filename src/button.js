@@ -4,7 +4,9 @@ export function Button(onClick, text, icon) {
     const textNode = document.createTextNode(text);
    
     button.classList.add('aside-button');
-    button.appendChild(icon);
+    if(icon){
+        button.appendChild(icon);
+    }
     button.appendChild(textNode);
     button.addEventListener('click', onClick);
 

@@ -4,6 +4,8 @@ import home from './home.png';
 import today from './today.png';
 import completed from './completed.png';
 import project from './project.png';
+import { Projects } from "./createProject";
+import { newProjectModal } from "./newProjectModal";
 
 function addIcon(icon) {
     const newIcon = new Image();
@@ -25,8 +27,9 @@ export function ButtonGroup () {
     const buttons = [
         {icon: homeIcon, onClick: () => {card.showAllCards()}, text: 'All'},
         {icon: todayIcon, onClick: () => {card.showTodayCards()}, text: 'Today'},
-        {icon: projectsIcon, onClick: () => console.log('click 3'), text: 'Projects'},
-        {icon: completedIcon, onClick: () => {card.showCompleted()}, text: 'Completed'}
+        {icon: completedIcon, onClick: () => {card.showCompleted()}, text: 'Completed'},
+        {icon: projectsIcon, onClick: () => {showAllButtons()}, text: 'Projects'}
+
     ]
 
     buttons.map((btn) => {
@@ -35,6 +38,17 @@ export function ButtonGroup () {
 
     return buttonGroup;
 
+}
+
+function showAllButtons() {
+        const projectList = document.querySelector('.project-list');
+        const size = projectList.childNodes.length;
+        const listButtons = Projects.allProjects();
+        listButtons.forEach(element => {
+            if (element != 'All' && size == 0){
+                newProjectModal.addProjectButton(() => {card.showProjectCards(element)},element);
+            }
+        });
 }
 
 

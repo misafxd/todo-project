@@ -1,13 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap');
 
-
 * {
     margin: 0;
     box-sizing: border-box;
     font-family: "Manrope", sans-serif;
 
 }
-
 
 .container {
     display: grid;
@@ -20,7 +18,6 @@
     border-radius: 1rem;
     filter: drop-shadow(-5px 5px 0.5rem #ecf4ff);
 }
-
 
 #aside {
     grid-area: aside;
@@ -47,7 +44,7 @@ header img, .aside-button img{
     gap: 0.5rem;
 }
 
-.aside-button {
+.aside-button, .project-list-btn{
     display: flex;
     align-items: center;
     gap: 0.5rem;
@@ -60,6 +57,13 @@ header img, .aside-button img{
 .aside-button.new-project {
     margin-top: auto;
     margin-block-end: 3rem;
+}
+
+.project-list-btn {
+    border: 2px solid #edc3e7;
+    border-radius: 5px;
+    padding: 0.5rem 1rem;
+    width: 100%;
 }
 
 #main {
@@ -163,4 +167,28 @@ input[type="checkbox"]:checked + * {
 
 .card.deleted > input[type='checkbox']{
     display: none;
+}
+
+button{
+    transition: background-color 0.3s ease; 
+}
+
+button:active {
+    background-color: #ad92a9;
+}
+
+.project-list {
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.project-list button::before {
+    content: '- ';
+}
+
+.empty {
+    margin-top: 2rem;
+    font-weight: 400;
 }

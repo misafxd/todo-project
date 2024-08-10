@@ -1,5 +1,8 @@
 import { Projects } from "./createProject";
 import { Storage } from "./storage";
+import { Button } from "./button";
+import { card } from "./taskCard";
+
 
 export const newProjectModal = ( function() {
 
@@ -18,8 +21,9 @@ export const newProjectModal = ( function() {
         const modalContainer = document.createElement('div');
         const form = document.createElement('form');
         const title = document.createElement('input');
-        title.type = 'text'
-        title.name = 'Project-title'
+        title.type = 'text';
+        title.name = 'Project-title';
+        title.required = true;
         const titleLabel = document.createElement('label');
         titleLabel.textContent = 'Insert a title'
         modalContainer.classList.add('project-modal-container');
@@ -31,13 +35,11 @@ export const newProjectModal = ( function() {
          closeButton.type = 'button'
          closeButton.addEventListener('click',()=> {closeProjectModal()});
 
-         
-        
-
         form.addEventListener('submit', (event)=> {
             event.preventDefault();
             const formData = new FormData(form);
-            Projects.newProject(formData.get('Project-title'));
+            let title = formData.get('Project-title');
+            Projects.newProject(title);
             closeProjectModal();
             form.reset();
             Storage.save();
@@ -50,12 +52,21 @@ export const newProjectModal = ( function() {
         modalContainer.appendChild(form);
 
         body.appendChild(modalContainer);
+        
+    }
 
-       
+
+    const addProjectButton = (onClick, title) => {
+        const buttonGroup = document.querySelector('.project-list');
+        let btn = Button(onClick, title);
+        btn.classList.add('project-list-btn');
+        btn.classList.remove('aside-button');
+        buttonGroup.appendChild(btn);
+        
     }
 
     return {
-        showProjectModal, closeProjectModal, modalProject
+        showProjectModal, closeProjectModal, modalProject, addProjectButton
     }
 
 })();
