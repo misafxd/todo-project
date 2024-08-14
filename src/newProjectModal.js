@@ -2,6 +2,7 @@ import { Projects } from "./createProject";
 import { Storage } from "./storage";
 import { Button } from "./button";
 import { card } from "./taskCard";
+import erase from "./delete.png"
 
 
 export const newProjectModal = ( function() {
@@ -58,9 +59,15 @@ export const newProjectModal = ( function() {
 
     const addProjectButton = (onClick, title) => {
         const buttonGroup = document.querySelector('.project-list');
+        const eraseIcon = new Image();
+        eraseIcon.src = erase;
         let btn = Button(onClick, title);
+
+        btn.appendChild(eraseIcon)
+
         btn.classList.add('project-list-btn');
         btn.classList.remove('aside-button');
+        
         buttonGroup.appendChild(btn);
         
     }

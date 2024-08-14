@@ -1,6 +1,7 @@
 import { Projects } from "./createProject";
 import { Storage } from "./storage";
 import { compareAsc, format} from "date-fns";
+import erase from "./delete.png";
 
 export const card = (function() {
     
@@ -9,6 +10,8 @@ export const card = (function() {
         const card = document.createElement('div');
         const cardInfo = document.createElement('div');
         const cardDescription = document.createElement('div');
+        const deleteCard = new Image();
+        deleteCard.src = erase;
         card.classList.add('card');
         const cardTitle = document.createElement('h3');
         cardTitle.innerText = title;
@@ -36,6 +39,7 @@ export const card = (function() {
         cardDescription.appendChild(Project);
         cardInfo.appendChild(cardDescription);
         card.appendChild(cardInfo);
+        card.appendChild(deleteCard);
         
         
         return card;
