@@ -33,6 +33,31 @@ export const Projects = ( function () {
         }
     }
 
+    const findTask = (projectTitle, taskTitle) => {
+        const project = projectList.find(proj => proj.title == projectTitle);
+        if(project){
+            const taskIndex = project.task.findIndex(task => task.title === taskTitle);
+            return project.task[taskIndex];
+        }
+    }
+
+    const updateTask = (oldProjectTitle, taskTitle, updatedTask) => {
+        deleteTask(oldProjectTitle, taskTitle)
+        
+        // Encuentra el nuevo proyecto (o crea uno nuevo si no existe)
+        const newProject = projectList.find(proj => proj.title === updatedTask.project_id);
+        if (newProject) {
+            // Agrega la tarea al nuevo proyecto
+            newProject.task.push(updatedTask);
+        } else {
+            // Si el proyecto no existe, crea uno nuevo y agrega la tarea
+            const newProject = createNewProject(updatedTask.project);
+            newProject.task.push(updatedTask);
+            projectList.push(newProject);
+        }
+        
+    };
+
     const allProjects = () => {
         return projectList.map(project => project.title);
         
@@ -55,5 +80,5 @@ export const Projects = ( function () {
         },[]);
     }
 
-    return {newProject, addTask, projectsList: projectList, allProjects, all, deleteProject, deleteTask}
+    return {newProject, addTask, projectsList: projectList, allProjects, all, deleteProject, deleteTask, updateTask, findTask }
 })();

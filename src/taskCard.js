@@ -1,28 +1,38 @@
 import { Projects } from "./createProject";
 import { Storage } from "./storage";
 import { compareAsc, format} from "date-fns";
+import { modal } from "./modal";
 import erase from "./delete.png";
+import edit from "./edit.svg";
 
 export const card = (function() {
     
     
-    const createCard = (title, due, project, checked) => {
+    const createCard = (title, due, project, description, checked) => {
         const card = document.createElement('div');
         const cardInfo = document.createElement('div');
         const cardDescription = document.createElement('div');
         const deleteCard = new Image();
         deleteCard.src = erase;
-        deleteCard.alt = '';
+        deleteCard.alt = "Delete task button";
         card.classList.add('card');
         const cardTitle = document.createElement('h3');
         cardTitle.innerText = title;
+        cardTitle.classList.add('task-name')
         const Due = document.createElement('p');
         Due.classList.add('due');
         Due.innerText = `Due: ${due}`;
         const Project = document.createElement('p');
-        Project.innerText = `Description: ${project}`;
+        Project.innerText = `Description: ${description}`;
         cardDescription.classList.add('card-information');
         cardInfo.classList.add('card-info');
+        const editIcon = new Image();
+        editIcon.src = edit;
+
+        editIcon.addEventListener('click', () => {
+            const taskToEdit = { title, due, project, description, checked };
+            modal.showModal(taskToEdit);
+        })
 
         const checkBox = document.createElement('input');
         checkBox.type = 'checkbox';
@@ -51,6 +61,7 @@ export const card = (function() {
         cardDescription.appendChild(Project);
         cardInfo.appendChild(cardDescription);
         card.appendChild(cardInfo);
+        card.appendChild(editIcon);
         card.appendChild(deleteCard);
         
         
@@ -107,7 +118,7 @@ export const card = (function() {
         
 
         allTask.forEach(task => {
-            let newTask = createCard(task.title, task.due, task.description, task.checked);
+            let newTask = createCard(task.title, task.due, task.project_id, task.description, task.checked);
             mainCards.appendChild(newTask);
         });
 
@@ -125,7 +136,7 @@ export const card = (function() {
         clean();
 
         todayTask.forEach(task => {
-            let newTask = createCard(task.title, task.due, task.description, task.checked);
+            let newTask = createCard(task.title, task.due, task.project_id, task.description, task.checked);
                 mainCards.appendChild(newTask);
         });
 
@@ -143,7 +154,7 @@ export const card = (function() {
         clean();
 
         completedtask.forEach(task => {
-            let newTask = createCard(task.title, task.due, task.description, task.checked);
+            let newTask = createCard(task.title, task.due, task.project_id,  task.description, task.checked);
             newTask.classList.add('deleted');
                 mainCards.appendChild(newTask);
         })
@@ -167,7 +178,7 @@ export const card = (function() {
         if (projectTask.length > 0){
         projectTask.forEach( task => {
  
-            let newTask = createCard(task.title, task.due, task.description, task.checked);
+            let newTask = createCard(task.title, task.due, task.project_id,  task.description,task.checked);
             mainCards.appendChild(newTask);
             
         })} else {

@@ -8,6 +8,7 @@ export const modal = (function() {
     let modalContent;
     let form;
     let projectName;
+    let currentTask;
 
     function createModal() {
         const body = document.getElementById('body');
@@ -27,12 +28,13 @@ export const modal = (function() {
 
         const submit = document.createElement('button');
         submit.type = 'submit';
-        submit.textContent = "Create";
+        submit.textContent = "Save";
 
         form.addEventListener('submit', handleSubmit);
 
         closeButton.textContent = "Cancel";
         closeButton.type = 'button';
+        closeButton.classList.add('secondary');
         closeButton.addEventListener('click', closeModal);
 
         form.appendChild(createLabel('Title'));
@@ -73,7 +75,13 @@ export const modal = (function() {
         event.preventDefault();
         const formData = new FormData(form);
         const taskObject = createTask.newTask(formData.get('Title'), formData.get('Date'), formData.get('Description'), formData.get('Project'));
-        Projects.addTask(taskObject.project_id, taskObject);
+
+        if (currentTask) {
+            Projects.updateTask(currentTask.project, currentTask.title, taskObject);
+        } else {
+            Projects.addTask(taskObject.project_id, taskObject);
+        }
+
         closeModal();
         form.reset();
         card.showAllCards();
@@ -81,11 +89,25 @@ export const modal = (function() {
         Storage.save();
     }
 
-    function showModal() {
+    function showModal(task = null) {
         if (!modalContainer) {
             createModal();
         }
         updateProjectOptions();
+
+        if (task) {
+            currentTask = task;
+            form.querySelector('button[type="submit"]').textContent = 'Save';
+            form.querySelector('#Title').value = task.title;
+            form.querySelector('#Date').value = task.due;
+            form.querySelector('#Description').value = task.description;
+            form.querySelector('#Project').value = task.project;
+        } else {
+            currentTask = null;
+            form.querySelector('button[type="submit"]').textContent = 'Create';
+            form.reset();
+        }
+
         modalContainer.classList.add('modal-visible');
     }
 

@@ -1,5 +1,5 @@
 import { Button } from "./button";
-import plus from './plus.svg';
+import plus from './plus.png';
 import { modal } from "./modal";
 import { card } from "./taskCard";
 import { newProjectModal } from "./newProjectModal";

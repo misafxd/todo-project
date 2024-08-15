@@ -34,6 +34,7 @@ export const newProjectModal = ( function() {
          submit.textContent = "Create";
          const closeButton = document.createElement('button');
          closeButton.textContent = "Cancel";
+         closeButton.classList.add('secondary');
          closeButton.type = 'button'
          closeButton.addEventListener('click',()=> {closeProjectModal()});
 
@@ -63,6 +64,7 @@ export const newProjectModal = ( function() {
         const eraseIcon = new Image();
         eraseIcon.src = erase;
         eraseIcon.classList.add('delete-project');
+        eraseIcon.alt = "Delete project button";
         const icono = new Image();
         icono.src = assignment;
         let btn = Button(onClick, title, icono);

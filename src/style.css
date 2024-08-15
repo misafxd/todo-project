@@ -14,6 +14,7 @@
     font-family: "Manrope", sans-serif;
 
 }
+
 body{
     background-color: var(--body-bg-color);
 }
@@ -71,8 +72,6 @@ header img, .aside-button img{
     margin-block-end: 3rem;
 }
 
-
-
 #main {
     grid-area: main;
     padding: 2rem;
@@ -93,6 +92,7 @@ header img, .aside-button img{
     background-color: var(--color1);
     border-radius: 0.5rem;
     padding-inline: 1rem;
+    font-weight: 500;
 }
 
 .main-header button img {
@@ -186,7 +186,6 @@ button:active {
     gap: 0.5rem;
 }
 
-
 .project-list-btn {
     border: 1px solid var(--color1);
     display: flex;
@@ -222,7 +221,6 @@ button:active {
     visibility: visible;
 }
 
-/* Estilo general del formulario */
 form {
     background: var(--bg-color); 
     border-radius: 15px; 
@@ -237,7 +235,6 @@ form {
 
 form label {
     display: block;
-    margin-bottom: 10px;
     font-weight: bold;
     color: #333; 
 }
@@ -248,8 +245,6 @@ form input, form select {
     border: 2px solid #ddd; 
     border-radius: 10px; 
     margin-bottom: 15px;
-    box-sizing: border-box; 
-    font-size: 16px;
     transition: border-color 0.3s ease; 
 }
 
@@ -265,10 +260,10 @@ form button {
     padding: 12px 20px; 
     border-radius: 10px; 
     cursor: pointer; 
-    font-size: 16px;
     transition: background 0.3s ease; 
     display: block;
     width: 100%;
+    font-weight: bold;
 }
 
 
@@ -279,5 +274,14 @@ form button:hover {
 form select:focus {
     border-color: var(--color1); 
     outline: none; 
+}
+
+button.secondary {
+    border: 1px solid var(--color1);
+    background-color: white;
+}
+
+button.secondary:hover {
+    background-color: #ededed;
 }
 
