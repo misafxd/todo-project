@@ -12,6 +12,7 @@ export const card = (function() {
         const cardDescription = document.createElement('div');
         const deleteCard = new Image();
         deleteCard.src = erase;
+        deleteCard.alt = '';
         card.classList.add('card');
         const cardTitle = document.createElement('h3');
         cardTitle.innerText = title;
@@ -19,7 +20,7 @@ export const card = (function() {
         Due.classList.add('due');
         Due.innerText = `Due: ${due}`;
         const Project = document.createElement('p');
-        Project.innerText = `Project: ${project}`;
+        Project.innerText = `Description: ${project}`;
         cardDescription.classList.add('card-information');
         cardInfo.classList.add('card-info');
 
@@ -106,7 +107,7 @@ export const card = (function() {
         
 
         allTask.forEach(task => {
-            let newTask = createCard(task.title, task.due, task.project_id, task.checked);
+            let newTask = createCard(task.title, task.due, task.description, task.checked);
             mainCards.appendChild(newTask);
         });
 
@@ -124,7 +125,7 @@ export const card = (function() {
         clean();
 
         todayTask.forEach(task => {
-            let newTask = createCard(task.title, task.due, task.project_id, task.checked);
+            let newTask = createCard(task.title, task.due, task.description, task.checked);
                 mainCards.appendChild(newTask);
         });
 
@@ -142,7 +143,7 @@ export const card = (function() {
         clean();
 
         completedtask.forEach(task => {
-            let newTask = createCard(task.title, task.due, task.project_id, task.checked);
+            let newTask = createCard(task.title, task.due, task.description, task.checked);
             newTask.classList.add('deleted');
                 mainCards.appendChild(newTask);
         })
@@ -166,7 +167,7 @@ export const card = (function() {
         if (projectTask.length > 0){
         projectTask.forEach( task => {
  
-            let newTask = createCard(task.title, task.due, task.project_id, task.checked);
+            let newTask = createCard(task.title, task.due, task.description, task.checked);
             mainCards.appendChild(newTask);
             
         })} else {

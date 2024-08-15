@@ -7,5 +7,4 @@ import { Projects } from './createProject';
 
 Aside('Meow Todo');
 MainContent();
-console.log(Projects.projectsList);
 

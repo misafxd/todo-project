@@ -3,6 +3,7 @@ import { Storage } from "./storage";
 import { Button } from "./button";
 import { card } from "./taskCard";
 import erase from "./delete.png"
+import assignment from "./assignment.svg"
 
 
 export const newProjectModal = ( function() {
@@ -26,7 +27,7 @@ export const newProjectModal = ( function() {
         title.name = 'Project-title';
         title.required = true;
         const titleLabel = document.createElement('label');
-        titleLabel.textContent = 'Insert a title'
+        titleLabel.textContent = 'Insert a project title'
         modalContainer.classList.add('project-modal-container');
         const submit = document.createElement('button');
         submit.type = 'submit';
@@ -61,7 +62,12 @@ export const newProjectModal = ( function() {
         const buttonGroup = document.querySelector('.project-list');
         const eraseIcon = new Image();
         eraseIcon.src = erase;
-        let btn = Button(onClick, title);
+        eraseIcon.classList.add('delete-project');
+        const icono = new Image();
+        icono.src = assignment;
+        let btn = Button(onClick, title, icono);
+        
+
         eraseIcon.addEventListener('click', (event) => {
             event.stopPropagation();
             const target = event.target;
@@ -74,6 +80,7 @@ export const newProjectModal = ( function() {
               card.showAllCards();
             } 
         })
+
         btn.appendChild(eraseIcon)
 
         btn.classList.add('project-list-btn');

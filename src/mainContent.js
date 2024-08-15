@@ -1,5 +1,5 @@
 import { Button } from "./button";
-import plus from './plus.png';
+import plus from './plus.svg';
 import { modal } from "./modal";
 import { card } from "./taskCard";
 import { newProjectModal } from "./newProjectModal";
@@ -18,6 +18,7 @@ export function MainContent(){
     mainTitle.textContent = "All";
     const plusIcon = new Image();
     plusIcon.src = plus;
+    plusIcon.alt = '';
 
     const addTaskButton = Button(() => {modal.showModal()},"New task", plusIcon);
     addTaskButton.classList.add('main-button');

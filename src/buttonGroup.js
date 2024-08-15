@@ -1,9 +1,9 @@
 import { Button } from "./button";
 import { card } from "./taskCard";
-import home from './home.png';
-import today from './today.png';
-import completed from './completed.png';
-import project from './project.png';
+import home from './home.svg';
+import today from './today.svg';
+import completed from './completed.svg';
+import project from './project.svg';
 import { Projects } from "./createProject";
 import { newProjectModal } from "./newProjectModal";
 
@@ -19,6 +19,10 @@ export function ButtonGroup () {
     const todayIcon = addIcon(today);
     const projectsIcon = addIcon(project);
     const completedIcon = addIcon(completed);
+    homeIcon.alt = ''
+    todayIcon.alt = ''
+    projectsIcon.alt = ''
+    completedIcon.alt = ''
    
 
     const buttonGroup = document.createElement('div');
@@ -42,13 +46,7 @@ export function ButtonGroup () {
 
 function showAllButtons() {
         const projectList = document.querySelector('.project-list');
-        const size = projectList.childNodes.length;
-        const listButtons = Projects.allProjects();
-        listButtons.forEach(element => {
-            if (element != 'All' && size == 0){
-                newProjectModal.addProjectButton(() => {card.showProjectCards(element)},element);
-            }
-        });
+        projectList.classList.toggle('visible');
 }
 
 
