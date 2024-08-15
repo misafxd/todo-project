@@ -62,7 +62,18 @@ export const newProjectModal = ( function() {
         const eraseIcon = new Image();
         eraseIcon.src = erase;
         let btn = Button(onClick, title);
-
+        eraseIcon.addEventListener('click', (event) => {
+            event.stopPropagation();
+            const target = event.target;
+            const parent = target.closest('.project-list-btn');
+            
+            if (parent) {
+              parent.remove();
+              Projects.deleteProject(title);
+              Storage.save();
+              card.showAllCards();
+            } 
+        })
         btn.appendChild(eraseIcon)
 
         btn.classList.add('project-list-btn');

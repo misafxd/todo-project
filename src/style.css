@@ -188,7 +188,7 @@ button:active {
 }
 
 .project-list button::before {
-    content: '- ';
+    content: "\2022 ";
 }
 
 .project-list-btn{
@@ -200,6 +200,7 @@ button:active {
     width: 1rem;
     height: 1rem;
     filter: invert(1);
+    cursor: pointer;
 }
 
 .empty {

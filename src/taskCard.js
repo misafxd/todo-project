@@ -33,6 +33,17 @@ export const card = (function() {
             
         })
 
+        deleteCard.addEventListener('click', (event) => {
+            const target = event.target;
+            const parent = target.closest('.card');
+        
+            if (parent) {
+                parent.remove();
+                Projects.deleteTask(project, title);
+                Storage.save();
+            }
+        });
+
         card.appendChild(checkBox);
         cardInfo.appendChild(cardTitle);
         cardDescription.appendChild(Due);
@@ -44,6 +55,7 @@ export const card = (function() {
         
         return card;
     }
+
 
     const clean = () => {
         const mainCards = document.querySelector('.cards');
@@ -112,7 +124,7 @@ export const card = (function() {
         clean();
 
         todayTask.forEach(task => {
-            let newTask = createCard(task.title, task.due, task.description, task.checked);
+            let newTask = createCard(task.title, task.due, task.project_id, task.checked);
                 mainCards.appendChild(newTask);
         });
 
@@ -130,7 +142,7 @@ export const card = (function() {
         clean();
 
         completedtask.forEach(task => {
-            let newTask = createCard(task.title, task.due, task.description, task.checked);
+            let newTask = createCard(task.title, task.due, task.project_id, task.checked);
             newTask.classList.add('deleted');
                 mainCards.appendChild(newTask);
         })
@@ -154,7 +166,7 @@ export const card = (function() {
         if (projectTask.length > 0){
         projectTask.forEach( task => {
  
-            let newTask = createCard(task.title, task.due, task.description, task.checked);
+            let newTask = createCard(task.title, task.due, task.project_id, task.checked);
             mainCards.appendChild(newTask);
             
         })} else {
