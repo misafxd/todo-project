@@ -1,10 +1,8 @@
 import './style.css'
 import { Aside } from './aside';
 import { MainContent} from './mainContent';
-import { Projects } from './createProject';
+import { header } from './header';
 
-
-
-Aside('Meow Todo');
+header('Meow Todo');
+Aside();
 MainContent();
-console.log(Projects.projectsList)

@@ -15,6 +15,10 @@
 
 }
 
+#header .menu {
+    display: none;
+}
+
 body{
     background-color: var(--body-bg-color);
 }
@@ -22,8 +26,10 @@ body{
 .container {
     display: grid;
     grid-template-columns: 1fr 4fr;
-    grid-template-rows: 1fr;
-    grid-template-areas: "aside main";
+    grid-template-rows: 1fr 7fr;
+    grid-template-areas: 
+    "header main"
+    "aside main";
     margin: 2.5rem;
     height: calc(100vh - 5rem);
     background-color: var(--bg-color);
@@ -32,20 +38,26 @@ body{
    
 }
 
-#aside {
-    grid-area: aside;
-    padding-inline: 2rem;
-    display: flex;
-    flex-direction: column;
-}
-
-header {
+#header {
+    grid-area: header;
+    padding-inline: 2.5rem;
+    font-size: 0.7rem;
+    height: 2rem;
     display: flex;
     align-items: center;
     gap: 0.375rem;
     margin-block: 2rem;
-    padding-inline-start: 0.5rem;
+    align-self: center;
 }
+
+#aside {
+    grid-area: aside;
+    padding-inline: 2rem;
+    padding-block: 1rem;
+    display: flex;
+    flex-direction: column;
+}
+
 
 header img, .aside-button img{
     width: 1.5rem;
@@ -63,7 +75,6 @@ header img, .aside-button img{
     gap: 0.5rem;
     border: none;
     background-color: transparent;
-    text-align: justify;
 
 }
 
@@ -74,14 +85,16 @@ header img, .aside-button img{
 
 #main {
     grid-area: main;
-    padding: 2rem;
+    padding-block: 2rem;
+    padding-inline-end: 2rem;
     display: flex;
     flex-direction: column;
+    overflow: hidden;
 }
 
 .main-header {
     display: flex;
-    margin-bottom: 1.5rem;
+    margin-block-end: 2.5rem;
 }
 
 .main-header h2 {
@@ -180,6 +193,7 @@ button:active {
 
 .project-list {
     visibility: hidden;
+    display: none;
     margin-top: 1rem;
     display: flex;
     flex-direction: column;
@@ -219,6 +233,7 @@ button:active {
 
 .project-list.visible{
     visibility: visible;
+    display: block;
 }
 
 form {
@@ -285,3 +300,61 @@ button.secondary:hover {
     background-color: #ededed;
 }
 
+@media (max-width:720px){
+    :root {
+        font-size: 12px;
+    }
+
+    .container {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 5fr 1fr;
+        grid-template-areas: "header header"
+        "main main"
+        ;
+    }
+
+    #aside {
+        display: none;
+    }
+    
+    #header {
+        font-size: 1rem;
+    }
+
+    #header .menu{
+        display: block;
+        margin-left: auto;
+    }
+
+    #main {
+        padding-inline: 3rem;
+    }
+
+    .card-info h3{
+        font-size: 1.1rem;
+    }
+
+    .card{
+        justify-content: center;
+    }
+
+    .card img {
+        margin: 0;
+    }
+
+    #aside.active {
+        display: block;
+        position: absolute;
+        top: 9rem;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        background-color: white;
+    }
+}
+
+@media (max-width: 480px){
+    :root {
+        font-size: 10px;
+    }
+}
